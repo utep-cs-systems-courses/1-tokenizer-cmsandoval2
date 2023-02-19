@@ -3,16 +3,19 @@
 int main(){
   char str[50];
   printf("$");
-  scanf("%s",str);
-  puts(str);
-  char first=space_char(str);
+  fgets(str,sizeof(str),stdin);
+  printf("%s",str);
+   for(int i=0;str[i];i++){
+  char first=space_char(str[i]);
   if(first==1)
     puts("There is a space");
-  else{
-    puts("No Spaces or tabs");
   }
   
-
+   for(int i=0;str[i];i++){
+   char second=non_space_char(str[i]);
+  if(second==1)
+    puts("No space");
+   }
 }
 int space_char(char c){
   char *a=&c;
@@ -20,5 +23,12 @@ int space_char(char c){
     if(c==' '||c=='\t') return 1;
   }
   return 0;
-
 }
+int non_space_char(char c){
+  char *a=&c;
+  while(*a++){
+    if(c==' '||c=='\t') return 0;
+  }
+  return 1;
+}
+ 
