@@ -17,7 +17,7 @@ int main(){
     }
    
    char *st=str;
-   printf("First character of next word is: %c \n",*word_start(st));
+   printf("First character of word is: %c \n",*word_start(st));
 
 
 }
@@ -30,17 +30,9 @@ int non_space_char(char c){
   return 1;
 }
 char *word_start(char *str){
-  while(*str){
+  while(str[0]==' '||str[0]=='\n'||str[0]=='\t'||str[0]=='\r'||str[0]=='\f'||str[0]=='\v'){
     str++;
-    if(str==" ")
-      str++;
-    return str;
-
   }
-  str=NULL;
   return str;
-    
-  
-  
 
 } 
