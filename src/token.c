@@ -9,13 +9,12 @@ int main(){
   char first=space_char(str[i]);
   if(first==1)
     puts("There is a space");
-  }
-  
-   for(int i=0;str[i];i++){
+   }
+   /*  for(int i=0;str[i];i++){
    char second=non_space_char(str[i]);
   if(second==1)
     puts("No space");
-   }
+    }*/
    
    char *st=str;
    printf("First character of next word is: %c \n",*word_start(st));
@@ -23,17 +22,11 @@ int main(){
 
 }
 int space_char(char c){
-  char *a=&c;
-  while(*a++){
     if(c==' '||c=='\t') return 1;
-  }
   return 0;
 }
 int non_space_char(char c){
-  char *a=&c;
-  while(*a++){
     if(c==' '||c=='\t') return 0;
-  }
   return 1;
 }
 char *word_start(char *str){
@@ -44,7 +37,7 @@ char *word_start(char *str){
     return str;
 
   }
-  str=0;
+  str=NULL;
   return str;
     
   
