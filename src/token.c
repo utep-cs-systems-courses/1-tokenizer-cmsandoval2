@@ -28,6 +28,7 @@ int main(){
      int first=space_char(str[i]);
      if(first==1){
        printf("Should return full word %s \n",copy_str(st3,i));
+       break;
      }
      }
 }
