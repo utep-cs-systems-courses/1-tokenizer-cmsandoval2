@@ -18,19 +18,23 @@ int main(){
     }
    
    char *st0=str;
-   char *st1=str;
+   /* char *st1=str;
    char *st2=str;
    char *st3=str;
+   char *st4=str;
+   */
    printf("First character of word is: %c \n",*word_start(st0));
-   printf("This method should return a space: %c \n",*word_terminator(st1));
-   printf("Number of words: %d \n ", count_words(st2));
+   printf("This method should return a space: %c \n",*word_terminator(st0));
+   printf("Number of words: %d \n ", count_words(st0));
    for(int i=0;str[i];i++){
      int first=space_char(str[i]);
      if(first==1){
-       printf("Should return full word %s \n",copy_str(st3,i));
+       printf("Should return full word: %s \n",copy_str(st0,i));
        break;
      }
      }
+   char** tokens= tokenize(st0);
+   print_tokens(tokens);
 }
 int space_char(char c){
     if(c==' '||c=='\t') return 1;
@@ -71,11 +75,33 @@ char *copy_str(char *inStr, short len){
   inStr=word_start(inStr);
   for(int i=0;i<len;i++){
   newStr[i]=inStr[i];
-  newStr[len]='0';
+  newStr[len]='\0';
   }
-  return newStr;
-  
-
-
-  
+  return newStr;  
+}
+char **tokenize(char* str){
+    int num_words = count_words(str);
+    char **tokens = (char **) malloc((num_words+1)*sizeof(char *));
+    int i;
+    for(i = 0; i < num_words; i++) {
+      str= word_start(str);
+      char *end = word_terminator(str);
+      tokens[i] = copy_str(str, end-str);
+      str=end;
+    }
+    tokens[num_words] = NULL;
+    return tokens;
+}
+void print_tokens(char **tokens) {
+  int i;
+  for(i = 0; tokens[i] != NULL; i++) {
+    printf("%s\n", tokens[i]);
+  }
+}
+void free_tokens(char **tokens) {
+  int i;
+  for(i = 0; tokens[i] != NULL; i++) {
+    free(tokens[i]);
+  }
+  free(tokens);
 }
